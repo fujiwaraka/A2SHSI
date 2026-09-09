@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A2SHSI | ECCV 2026</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      margin: 0;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 24px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .authors {
+      text-align: center;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .venue {
+      text-align: center;
+      font-size: 1.15rem;
+      margin-bottom: 25px;
+    }
+
+    .links {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: white;
+      background: #333;
+      border-radius: 6px;
+    }
+
+    h2 {
+      margin-top: 45px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 24px auto;
+    }
+
+    .abstract {
+      text-align: justify;
+    }
+
+    pre {
+      background: #f5f5f5;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>
+    Compact Low-Cost Hyperspectral Imaging<br>
+    via Angular-to-Spectral Diversity Conversion
+  </h1>
+
+  <div class="authors">
+    Kazuma Fujiwara,
+    Takuya Funatomi,
+    Kazuya Kitano,
+    Yuki Fujimura,
+    Yasuhiro Mukaigawa
+  </div>
+
+  <div class="venue">
+    ECCV 2026
+  </div>
+
+  <div class="links">
+    <a href="paper.pdf">Paper</a>
+    <a href="https://sites.google.com/kazumafujiwara.com/kazuma-fujiwara/main">
+      Personal Page
+    </a>
+  </div>
+
+  <h2>Abstract</h2>
+
+  <p class="abstract">
+    Snapshot hyperspectral imaging avoids sequential scanning, but systems
+    that jointly achieve stable reconstruction, low cost, and compact optics
+    remain limited. We present a snapshot hyperspectral imaging system based
+    on angular-to-spectral diversity conversion. A tapered kaleidoscope
+    creates replicated views with distinct incidence directions, and a
+    directly attached birefringent filter converts them into
+    view-channel-dependent spectral transmittances, yielding complementary
+    measurements that better condition the inverse problem for more stable
+    single-shot spectral reconstruction. The system preserves a simple
+    pixel-wise linear model for fast non-learning-based reconstruction and
+    uses only off-the-shelf components without relay optics or cascaded
+    modules.
+  </p>
+
+  <h2>Key Idea</h2>
+
+  <p>
+    A tapered kaleidoscope generates angularly diverse replicated views.
+    A directly attached birefringent filter converts this angular diversity
+    into spectral-response diversity, enabling compact and low-cost snapshot
+    hyperspectral imaging.
+  </p>
+
+  <h2>System</h2>
+
+  <p>
+    The prototype is a compact 21 cm add-on built from off-the-shelf optical
+    components. It reconstructs 25 spectral bands from 430 nm to 670 nm
+    without learning-based reconstruction.
+  </p>
+
+  <h2>BibTeX</h2>
+
+  <pre>
+@inproceedings{fujiwara2026a2shsi,
+  title     = {Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion},
+  author    = {Fujiwara, Kazuma and Funatomi, Takuya and Kitano, Kazuya and Fujimura, Yuki and Mukaigawa, Yasuhiro},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}
+  </pre>
+
+</div>
+
+</body>
+</html>
