@@ -1,12 +1,15 @@
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>A2SHSI | ECCV 2026</title>
-  <meta name="description"
-        content="Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion, ECCV 2026.">
+
+  <meta
+    name="description"
+    content="Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion, ECCV 2026."
+  >
 
   <style>
     :root {
@@ -43,8 +46,8 @@ html = r'''<!DOCTYPE html>
     }
 
     h2 {
-      margin-top: 52px;
-      margin-bottom: 18px;
+      max-width: 900px;
+      margin: 52px auto 18px;
       border-bottom: 1px solid var(--line);
       padding-bottom: 7px;
       font-size: 1.65rem;
@@ -112,25 +115,37 @@ html = r'''<!DOCTYPE html>
       opacity: 0.82;
     }
 
+    /* Main text width */
+    .text-content {
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Fig. 1: slightly larger hero width */
     .hero {
+      max-width: 920px;
       margin: 10px auto 34px;
     }
 
-    .hero img,
-    .figure img,
-    .result-card img {
+    .hero img {
       width: 100%;
       height: auto;
       display: block;
+      border-radius: 9px;
     }
 
-    .hero img,
-    .figure img {
-      border-radius: 8px;
-    }
-
+    /* Fig. 2 and other standard figures */
     .figure {
+      max-width: 850px;
       margin: 24px auto;
+    }
+
+    .figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
     }
 
     .figure figcaption {
@@ -144,11 +159,13 @@ html = r'''<!DOCTYPE html>
       text-align: justify;
     }
 
+    /* Quick summary cards */
     .stats {
+      max-width: 900px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin: 24px 0 8px;
+      margin: 24px auto 8px;
     }
 
     .stat {
@@ -171,11 +188,13 @@ html = r'''<!DOCTYPE html>
       color: var(--muted);
     }
 
+    /* Three-step explanation */
     .idea {
+      max-width: 880px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-top: 18px;
+      margin: 18px auto 0;
     }
 
     .idea-item {
@@ -199,26 +218,33 @@ html = r'''<!DOCTYPE html>
       font-size: 0.95rem;
     }
 
+    /* Results: vertical and lighter than boxed cards */
     .results {
+      max-width: 860px;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 38px;
+      margin: 0 auto;
     }
 
     .result-card {
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      overflow: hidden;
       background: #fff;
     }
 
+    .result-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
     .result-text {
-      padding: 13px 15px 14px;
+      padding: 10px 2px 0;
     }
 
     .result-title {
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .result-caption {
@@ -227,16 +253,44 @@ html = r'''<!DOCTYPE html>
       line-height: 1.45;
     }
 
-    pre {
+    /* BibTeX */
+    .bibtex-box {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .bibtex-box pre {
       background: #f5f5f5;
-      padding: 16px;
+      margin: 0;
+      padding: 48px 16px 16px;
       overflow-x: auto;
       border-radius: 6px;
       font-size: 0.92rem;
     }
 
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: 1px solid #d0d0d0;
+      background: #fff;
+      color: #444;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .copy-button:hover {
+      background: #ededed;
+    }
+
+    /* Video: 60% of the page content on desktop */
     .video-section {
       width: 60%;
+      max-width: 620px;
       margin: 0 auto;
     }
 
@@ -257,7 +311,8 @@ html = r'''<!DOCTYPE html>
     }
 
     footer {
-      margin-top: 54px;
+      max-width: 900px;
+      margin: 54px auto 0;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       color: var(--muted);
@@ -268,6 +323,10 @@ html = r'''<!DOCTYPE html>
     @media (max-width: 760px) {
       .container {
         padding: 34px 18px 56px;
+      }
+
+      h2 {
+        margin-top: 44px;
       }
 
       .stats {
@@ -282,40 +341,70 @@ html = r'''<!DOCTYPE html>
         text-align: left;
       }
 
+      .hero,
+      .figure,
+      .text-content,
+      .stats,
+      .idea,
+      .results,
+      .bibtex-box {
+        max-width: 100%;
+      }
+
       .video-section {
         width: 100%;
+        max-width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
+
 <div class="container">
+
+  <!-- =========================================================
+       Title
+       ========================================================= -->
 
   <h1>
     Compact Low-Cost Hyperspectral Imaging<br>
     via Angular-to-Spectral Diversity Conversion
   </h1>
 
-  <div class="venue">ECCV 2026</div>
+  <div class="venue">
+    ECCV 2026
+  </div>
+
+
+  <!-- =========================================================
+       Authors
+       ========================================================= -->
 
   <div class="authors">
+
     <a href="https://sites.google.com/kazumafujiwara.com/kazuma-fujiwara/main">
       Kazuma Fujiwara
     </a><sup>1</sup><span class="corresponding">✉</span>,
+
     <a href="https://www.image.media.kyoto-u.ac.jp/en/author/takuya-funatomi/">
       Takuya Funatomi
     </a><sup>1,2</sup>,
+
     <a href="https://researchmap.jp/kazuyakitano?lang=en">
       Kazuya Kitano
     </a><sup>1</sup>,
+
     <a href="https://yfujimura.github.io/">
       Yuki Fujimura
     </a><sup>1</sup>,
+
     <a href="https://omilab.naist.jp/~mukaigawa/">
       Yasuhiro Mukaigawa
     </a><sup>1</sup>
+
   </div>
+
 
   <div class="affiliations">
     <sup>1</sup>Nara Institute of Science and Technology
@@ -323,136 +412,257 @@ html = r'''<!DOCTYPE html>
     <sup>2</sup>Kyoto University
   </div>
 
+
+  <!-- =========================================================
+       Links
+       ========================================================= -->
+
   <div class="links">
     <a href="A2SHSI_ECCV2026.pdf">Paper</a>
     <a href="A2SHSI_ECCV2026_Supp.pdf">Supplementary</a>
     <a href="A2SHSI_ECCV2026_Poster.pdf">Poster</a>
   </div>
 
-  <!-- Fig. 1 -->
+
+  <!-- =========================================================
+       Fig. 1 / Hero figure
+       ========================================================= -->
+
   <figure class="hero">
-    <img src="fig1.png"
-         alt="Overview of angular-to-spectral diversity conversion for snapshot hyperspectral imaging">
+    <img
+      src="fig1.png"
+      alt="Overview of angular-to-spectral diversity conversion for snapshot hyperspectral imaging"
+    >
   </figure>
+
+
+  <!-- =========================================================
+       Abstract
+       ========================================================= -->
 
   <h2>Abstract</h2>
 
-  <p class="abstract">
-    Snapshot hyperspectral imaging avoids sequential scanning, but systems that jointly
-    achieve stable reconstruction, low cost, and compact optics remain limited. We present
-    a snapshot hyperspectral imaging system based on angular-to-spectral diversity conversion.
-    A tapered kaleidoscope creates replicated views with distinct incidence directions, and
-    a directly attached birefringent filter converts them into view-channel-dependent spectral
-    transmittances, yielding complementary measurements that better condition the inverse
-    problem for more stable single-shot spectral reconstruction. The system preserves a simple
-    pixel-wise linear model for fast non-learning-based reconstruction and uses only off-the-shelf
-    components without relay optics or cascaded modules. We select the birefringent filter
-    configuration using a condition-number-based criterion and validate the system on both
-    synthetic and real data.
-  </p>
+  <div class="text-content">
+    <p class="abstract">
+      Snapshot hyperspectral imaging avoids sequential scanning, but systems
+      that jointly achieve stable reconstruction, low cost, and compact optics
+      remain limited. We present a snapshot hyperspectral imaging system based
+      on angular-to-spectral diversity conversion. A tapered kaleidoscope
+      creates replicated views with distinct incidence directions, and a
+      directly attached birefringent filter converts them into
+      view-channel-dependent spectral transmittances, yielding complementary
+      measurements that better condition the inverse problem for more stable
+      single-shot spectral reconstruction. The system preserves a simple
+      pixel-wise linear model for fast non-learning-based reconstruction and
+      uses only off-the-shelf components without relay optics or cascaded
+      modules. We select the birefringent filter configuration using a
+      condition-number-based criterion and validate the system on both
+      synthetic and real data.
+    </p>
+  </div>
+
+
+  <!-- =========================================================
+       Quick summary
+       ========================================================= -->
 
   <div class="stats">
+
     <div class="stat">
       <div class="value">21 cm</div>
       <div class="label">compact add-on</div>
     </div>
+
     <div class="stat">
       <div class="value">25 bands</div>
       <div class="label">spectral reconstruction</div>
     </div>
+
     <div class="stat">
       <div class="value">430–670 nm</div>
       <div class="label">spectral range</div>
     </div>
+
     <div class="stat">
       <div class="value">No learning</div>
       <div class="label">pixel-wise inverse solver</div>
     </div>
+
   </div>
+
+
+  <!-- =========================================================
+       System overview
+       ========================================================= -->
 
   <h2>System Overview</h2>
 
-  <p>
-    Our system converts angular diversity into spectral-response diversity in a compact
-    optical add-on. A tapered kaleidoscope generates multiple replicated views, and a
-    birefringent filter modulates each view differently depending on incidence direction.
-    These complementary measurements are then used to reconstruct the hyperspectral cube.
-  </p>
+  <div class="text-content">
+    <p>
+      Our system converts angular diversity into spectral-response diversity
+      in a compact optical add-on. A tapered kaleidoscope generates multiple
+      replicated views, and a birefringent filter modulates each view
+      differently depending on incidence direction. These complementary
+      measurements are then used to reconstruct the hyperspectral cube.
+    </p>
+  </div>
+
 
   <!-- Fig. 2 -->
+
   <figure class="figure">
-    <img src="fig2.png"
-         alt="Optical system with objective lens, diffuser, birefringent filter, tapered kaleidoscope, imaging lens, and camera">
+
+    <img
+      src="fig2.png"
+      alt="Optical system with objective lens, diffuser, birefringent filter, tapered kaleidoscope, imaging lens, and camera"
+    >
+
     <figcaption>
       Fig. 2. Proposed optics and angular-to-spectral diversity conversion.
     </figcaption>
+
   </figure>
 
+
+  <!-- Simple three-step explanation -->
+
   <div class="idea">
+
     <div class="idea-item">
+
       <div class="number">01</div>
-      <div class="title">Replicate views</div>
-      <div class="text">
-        The tapered kaleidoscope produces multiple views of the same scene with different
-        incidence directions.
+
+      <div class="title">
+        Replicate views
       </div>
+
+      <div class="text">
+        The tapered kaleidoscope produces multiple views of the same scene
+        with different incidence directions.
+      </div>
+
     </div>
 
+
     <div class="idea-item">
+
       <div class="number">02</div>
-      <div class="title">Convert angle to spectrum</div>
-      <div class="text">
-        The birefringent filter changes its spectral transmittance with incidence direction,
-        creating complementary spectral measurements.
+
+      <div class="title">
+        Convert angle to spectrum
       </div>
+
+      <div class="text">
+        The birefringent filter changes its spectral transmittance with
+        incidence direction, creating complementary spectral measurements.
+      </div>
+
     </div>
 
+
     <div class="idea-item">
+
       <div class="number">03</div>
-      <div class="title">Reconstruct the cube</div>
-      <div class="text">
-        Registered measurements are combined through a simple pixel-wise linear model to
-        recover 25-band hyperspectral data.
+
+      <div class="title">
+        Reconstruct the cube
       </div>
+
+      <div class="text">
+        Registered measurements are combined through a simple pixel-wise
+        linear model to recover 25-band hyperspectral data.
+      </div>
+
     </div>
+
   </div>
+
+
+  <!-- =========================================================
+       Results
+       ========================================================= -->
 
   <h2>Results</h2>
 
+
   <div class="results">
 
-    <!-- ColorChecker result -->
+
+    <!-- ColorChecker -->
+
     <div class="result-card">
-      <img src="result_colorchecker.png"
-           alt="ColorChecker reflectance reconstruction result">
+
+      <img
+        src="result_colorchecker.png"
+        alt="ColorChecker reflectance reconstruction result"
+      >
+
       <div class="result-text">
-        <div class="result-title">ColorChecker validation</div>
-        <div class="result-caption">
-          Real-data reflectance reconstruction over 25 bands from 430 nm to 670 nm.
-          The reconstruction achieves 27.4 dB PSNR over all 24 patches and wavelengths.
+
+        <div class="result-title">
+          ColorChecker Validation
         </div>
+
+        <div class="result-caption">
+          Real-data reflectance reconstruction over 25 bands from
+          430 nm to 670 nm. The reconstruction achieves 27.4 dB PSNR
+          over all 24 patches and wavelengths.
+        </div>
+
       </div>
+
     </div>
 
-    <!-- Real-scene result -->
+
+    <!-- Real scene -->
+
     <div class="result-card">
-      <img src="result_realscene.png"
-           alt="Real-scene 25-band hyperspectral reconstruction">
+
+      <img
+        src="result_realscene.png"
+        alt="Real-scene 25-band hyperspectral reconstruction"
+      >
+
       <div class="result-text">
-        <div class="result-title">Real-scene reconstruction</div>
-        <div class="result-caption">
-          A leaf, flower, and printed materials are reconstructed using the same prototype
-          and reconstruction pipeline, showing material-dependent spectral variation in a
-          non-flat scene.
+
+        <div class="result-title">
+          Real-Scene Reconstruction
         </div>
+
+        <div class="result-caption">
+          A leaf, flower, and printed materials are reconstructed using
+          the same prototype and reconstruction pipeline, showing
+          material-dependent spectral variation in a non-flat scene.
+        </div>
+
       </div>
+
     </div>
+
 
   </div>
 
+
+  <!-- =========================================================
+       BibTeX
+       ========================================================= -->
+
   <h2>BibTeX</h2>
 
-  <pre>@inproceedings{fujiwara2026a2shsi,
+
+  <div class="bibtex-box">
+
+    <button
+      class="copy-button"
+      id="copy-button"
+      onclick="copyBibtex()"
+      aria-label="Copy BibTeX"
+    >
+      ⧉ Copy
+    </button>
+
+
+    <pre id="bibtex">@inproceedings{fujiwara2026a2shsi,
   title     = {Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion},
   author    = {Fujiwara, Kazuma and Funatomi, Takuya and Kitano, Kazuya and Fujimura, Yuki and Mukaigawa, Yasuhiro},
   booktitle = {Computer Vision -- ECCV 2026},
@@ -460,10 +670,20 @@ html = r'''<!DOCTYPE html>
   year      = {2026}
 }</pre>
 
+  </div>
+
+
+  <!-- =========================================================
+       Video
+       ========================================================= -->
+
   <h2>Video</h2>
 
+
   <div class="video-section">
+
     <div class="video-wrap">
+
       <iframe
         src="https://www.youtube.com/embed/zkBnp8gVejE"
         title="A2SHSI video"
@@ -471,20 +691,64 @@ html = r'''<!DOCTYPE html>
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
+
     </div>
+
   </div>
+
+
+  <!-- =========================================================
+       Footer
+       ========================================================= -->
 
   <footer>
     ECCV 2026 · A2SHSI
   </footer>
 
+
 </div>
+
+
+<script>
+  async function copyBibtex() {
+    const bibtex = document.getElementById("bibtex").innerText;
+    const button = document.getElementById("copy-button");
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(bibtex);
+      } else {
+        const textarea = document.createElement("textarea");
+
+        textarea.value = bibtex;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+
+        document.body.appendChild(textarea);
+
+        textarea.focus();
+        textarea.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(textarea);
+      }
+
+      button.textContent = "✓ Copied";
+
+      setTimeout(() => {
+        button.textContent = "⧉ Copy";
+      }, 1500);
+
+    } catch (error) {
+      button.textContent = "Copy failed";
+
+      setTimeout(() => {
+        button.textContent = "⧉ Copy";
+      }, 1500);
+    }
+  }
+</script>
+
 </body>
 </html>
-'''
-
-path = "/mnt/data/a2shsi_eccv2026_final.html"
-with open(path, "w", encoding="utf-8") as f:
-    f.write(html)
-
-print(path)
