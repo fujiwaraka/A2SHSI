@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -112,15 +112,25 @@
       opacity: 0.82;
     }
 
-    .figure {
-      margin: 24px auto;
+    .hero {
+      margin: 10px auto 34px;
     }
 
-    .figure img {
+    .hero img,
+    .figure img,
+    .result-card img {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .hero img,
+    .figure img {
       border-radius: 8px;
+    }
+
+    .figure {
+      margin: 24px auto;
     }
 
     .figure figcaption {
@@ -128,18 +138,6 @@
       color: var(--muted);
       font-size: 0.94rem;
       margin-top: 9px;
-    }
-
-    .hero {
-      margin-top: 10px;
-      margin-bottom: 34px;
-    }
-
-    .hero img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px;
     }
 
     .abstract {
@@ -202,10 +200,9 @@
     }
 
     .results {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
     }
 
     .result-card {
@@ -213,12 +210,6 @@
       border-radius: 9px;
       overflow: hidden;
       background: #fff;
-    }
-
-    .result-card img {
-      width: 100%;
-      height: auto;
-      display: block;
     }
 
     .result-text {
@@ -236,6 +227,19 @@
       line-height: 1.45;
     }
 
+    pre {
+      background: #f5f5f5;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-size: 0.92rem;
+    }
+
+    .video-section {
+      width: 60%;
+      margin: 0 auto;
+    }
+
     .video-wrap {
       position: relative;
       width: 100%;
@@ -250,14 +254,6 @@
       height: 100%;
       border: 0;
       display: block;
-    }
-
-    pre {
-      background: #f5f5f5;
-      padding: 16px;
-      overflow-x: auto;
-      border-radius: 6px;
-      font-size: 0.92rem;
     }
 
     footer {
@@ -278,13 +274,16 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .idea,
-      .results {
+      .idea {
         grid-template-columns: 1fr;
       }
 
       .abstract {
         text-align: left;
+      }
+
+      .video-section {
+        width: 100%;
       }
     }
   </style>
@@ -330,6 +329,7 @@
     <a href="A2SHSI_ECCV2026_Poster.pdf">Poster</a>
   </div>
 
+  <!-- Fig. 1 -->
   <figure class="hero">
     <img src="fig1.png"
          alt="Overview of angular-to-spectral diversity conversion for snapshot hyperspectral imaging">
@@ -339,15 +339,16 @@
 
   <p class="abstract">
     Snapshot hyperspectral imaging avoids sequential scanning, but systems that jointly
-    achieve stable reconstruction, low cost, and compact optics remain limited.
-    We present a snapshot hyperspectral imaging system based on angular-to-spectral
-    diversity conversion. A tapered kaleidoscope creates replicated views with distinct
-    incidence directions, and a directly attached birefringent filter converts them into
-    view-channel-dependent spectral transmittances, yielding complementary measurements
-    that better condition the inverse problem for more stable single-shot spectral
-    reconstruction. The system preserves a simple pixel-wise linear model for fast
-    non-learning-based reconstruction and uses only off-the-shelf components without
-    relay optics or cascaded modules.
+    achieve stable reconstruction, low cost, and compact optics remain limited. We present
+    a snapshot hyperspectral imaging system based on angular-to-spectral diversity conversion.
+    A tapered kaleidoscope creates replicated views with distinct incidence directions, and
+    a directly attached birefringent filter converts them into view-channel-dependent spectral
+    transmittances, yielding complementary measurements that better condition the inverse
+    problem for more stable single-shot spectral reconstruction. The system preserves a simple
+    pixel-wise linear model for fast non-learning-based reconstruction and uses only off-the-shelf
+    components without relay optics or cascaded modules. We select the birefringent filter
+    configuration using a condition-number-based criterion and validate the system on both
+    synthetic and real data.
   </p>
 
   <div class="stats">
@@ -378,11 +379,12 @@
     These complementary measurements are then used to reconstruct the hyperspectral cube.
   </p>
 
+  <!-- Fig. 2 -->
   <figure class="figure">
     <img src="fig2.png"
          alt="Optical system with objective lens, diffuser, birefringent filter, tapered kaleidoscope, imaging lens, and camera">
     <figcaption>
-      Fig. 2. Optical system and angular-to-spectral diversity conversion.
+      Fig. 2. Proposed optics and angular-to-spectral diversity conversion.
     </figcaption>
   </figure>
 
@@ -400,8 +402,8 @@
       <div class="number">02</div>
       <div class="title">Convert angle to spectrum</div>
       <div class="text">
-        The birefringent filter changes its spectral transmittance with incidence
-        direction, creating complementary spectral measurements.
+        The birefringent filter changes its spectral transmittance with incidence direction,
+        creating complementary spectral measurements.
       </div>
     </div>
 
@@ -418,41 +420,34 @@
   <h2>Results</h2>
 
   <div class="results">
+
+    <!-- ColorChecker result -->
     <div class="result-card">
       <img src="result_colorchecker.png"
            alt="ColorChecker reflectance reconstruction result">
       <div class="result-text">
-        <div class="result-title">ColorChecker experiment</div>
+        <div class="result-title">ColorChecker validation</div>
         <div class="result-caption">
-          Reconstruction on real captured ColorChecker data. The figure shows the
-          reconstructed reflectance result and representative spectra across color patches.
+          Real-data reflectance reconstruction over 25 bands from 430 nm to 670 nm.
+          The reconstruction achieves 27.4 dB PSNR over all 24 patches and wavelengths.
         </div>
       </div>
     </div>
 
+    <!-- Real-scene result -->
     <div class="result-card">
       <img src="result_realscene.png"
-           alt="Real-scene hyperspectral reconstruction result">
+           alt="Real-scene 25-band hyperspectral reconstruction">
       <div class="result-text">
         <div class="result-title">Real-scene reconstruction</div>
         <div class="result-caption">
-          Real-scene 25-band reconstruction demonstrating material-dependent spectral
-          variation beyond flat calibration targets.
+          A leaf, flower, and printed materials are reconstructed using the same prototype
+          and reconstruction pipeline, showing material-dependent spectral variation in a
+          non-flat scene.
         </div>
       </div>
     </div>
-  </div>
 
-  <h2>Video</h2>
-
-  <div class="video-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/zkBnp8gVejE"
-      title="A2SHSI video"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
   </div>
 
   <h2>BibTeX</h2>
@@ -465,6 +460,20 @@
   year      = {2026}
 }</pre>
 
+  <h2>Video</h2>
+
+  <div class="video-section">
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/zkBnp8gVejE"
+        title="A2SHSI video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
   <footer>
     ECCV 2026 · A2SHSI
   </footer>
@@ -472,3 +481,10 @@
 </div>
 </body>
 </html>
+'''
+
+path = "/mnt/data/a2shsi_eccv2026_final.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+print(path)
