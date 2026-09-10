@@ -5,109 +5,251 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>A2SHSI | ECCV 2026</title>
+  <meta name="description"
+        content="Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion, ECCV 2026.">
 
   <style>
+    :root {
+      --text: #222;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #0066cc;
+      --panel: #f7f8fa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
-      color: #222;
+      color: var(--text);
       margin: 0;
       background: #fff;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: 0 auto;
-      padding: 50px 24px;
+      padding: 48px 24px 72px;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
       line-height: 1.15;
       text-align: center;
+      margin: 0 0 16px;
+    }
+
+    h2 {
+      margin-top: 52px;
       margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 7px;
+      font-size: 1.65rem;
     }
 
-  
-    .author-link {
-      color: #0066cc;
-      text-decoration: none;
+    p {
+      margin: 0 0 16px;
     }
-
-    .author-link:hover {
-      text-decoration: underline;
-    }
-
 
     .venue {
       text-align: center;
       font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    
+
     .authors {
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       margin-bottom: 7px;
     }
-    
+
     .authors a {
-      color: #0066cc;
+      color: var(--accent);
       text-decoration: none;
     }
-    
+
     .authors a:hover {
       text-decoration: underline;
     }
-    
+
     .affiliations {
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: #555;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
     }
-    
+
     sup {
       font-size: 0.7em;
     }
-    
+
     .corresponding {
       margin-left: 3px;
       font-size: 0.9em;
     }
-    
+
     .links {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 38px;
     }
-        
-  
+
     .links a {
       display: inline-block;
       margin: 5px;
-      padding: 10px 18px;
+      padding: 9px 17px;
       text-decoration: none;
-      color: white;
+      color: #fff;
       background: #333;
       border-radius: 6px;
+      transition: opacity 0.15s ease;
     }
 
-    h2 {
-      margin-top: 45px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 6px;
+    .links a:hover {
+      opacity: 0.82;
     }
 
-    img {
-      max-width: 100%;
+    .figure {
+      margin: 24px auto;
+    }
+
+    .figure img {
+      width: 100%;
       height: auto;
       display: block;
-      margin: 24px auto;
+      border-radius: 8px;
+    }
+
+    .figure figcaption {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 9px;
+    }
+
+    .hero {
+      margin-top: 10px;
+      margin-bottom: 34px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
     }
 
     .abstract {
       text-align: justify;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 24px 0 8px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 17px 12px;
+      text-align: center;
+    }
+
+    .stat .value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .stat .label {
+      margin-top: 4px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .idea {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .idea-item {
+      border-left: 3px solid #333;
+      padding: 4px 12px 4px 14px;
+    }
+
+    .idea-item .number {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+    }
+
+    .idea-item .title {
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .idea-item .text {
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .result-card {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .result-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .result-text {
+      padding: 13px 15px 14px;
+    }
+
+    .result-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .result-caption {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.45;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 9px;
+      background: #111;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     pre {
@@ -115,106 +257,218 @@
       padding: 16px;
       overflow-x: auto;
       border-radius: 6px;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      margin-top: 54px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        padding: 34px 18px 56px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .idea,
+      .results {
+        grid-template-columns: 1fr;
+      }
+
+      .abstract {
+        text-align: left;
+      }
     }
   </style>
 </head>
 
 <body>
-
 <div class="container">
-  
-<h1>
-  Compact Low-Cost Hyperspectral Imaging<br>
-  via Angular-to-Spectral Diversity Conversion
-</h1>
 
-<div class="venue">
-  ECCV 2026
-</div>
+  <h1>
+    Compact Low-Cost Hyperspectral Imaging<br>
+    via Angular-to-Spectral Diversity Conversion
+  </h1>
 
-<div class="authors">
+  <div class="venue">ECCV 2026</div>
 
-  <a href="https://sites.google.com/kazumafujiwara.com/kazuma-fujiwara/main">
-    Kazuma Fujiwara
-  </a><sup>1</sup><span class="corresponding">✉</span>,
-  
-  <a href="https://www.image.media.kyoto-u.ac.jp/en/author/takuya-funatomi/">
-    Takuya Funatomi
-  </a><sup>1,2</sup>,
-  
-  <a href="https://researchmap.jp/kazuyakitano?lang=en">
-    Kazuya Kitano
-  </a><sup>1</sup>,
-  
-  <a href="https://yfujimura.github.io/">
-    Yuki Fujimura
-  </a><sup>1</sup>,
-  
-  <a href="https://omilab.naist.jp/~mukaigawa/">
-    Yasuhiro Mukaigawa
-  </a><sup>1</sup>
-</div>
+  <div class="authors">
+    <a href="https://sites.google.com/kazumafujiwara.com/kazuma-fujiwara/main">
+      Kazuma Fujiwara
+    </a><sup>1</sup><span class="corresponding">✉</span>,
+    <a href="https://www.image.media.kyoto-u.ac.jp/en/author/takuya-funatomi/">
+      Takuya Funatomi
+    </a><sup>1,2</sup>,
+    <a href="https://researchmap.jp/kazuyakitano?lang=en">
+      Kazuya Kitano
+    </a><sup>1</sup>,
+    <a href="https://yfujimura.github.io/">
+      Yuki Fujimura
+    </a><sup>1</sup>,
+    <a href="https://omilab.naist.jp/~mukaigawa/">
+      Yasuhiro Mukaigawa
+    </a><sup>1</sup>
+  </div>
 
-<div class="affiliations">
-  <sup>1</sup>Nara Institute of Science and Technology
-  &nbsp;&nbsp;&nbsp;
-  <sup>2</sup>Kyoto University
-</div>
+  <div class="affiliations">
+    <sup>1</sup>Nara Institute of Science and Technology
+    &nbsp;&nbsp;&nbsp;
+    <sup>2</sup>Kyoto University
+  </div>
 
-<div class="links">
-  <a href="A2SHSI_ECCV2026.pdf">Paper</a>
-  <a href="A2SHSI_ECCV2026_Supp.pdf">Supplementary</a>
-  <a href="A2SHSI_ECCV2026_Poster.pdf">Poster</a>
-</div>
+  <div class="links">
+    <a href="A2SHSI_ECCV2026.pdf">Paper</a>
+    <a href="A2SHSI_ECCV2026_Supp.pdf">Supplementary</a>
+    <a href="A2SHSI_ECCV2026_Poster.pdf">Poster</a>
+  </div>
 
-  
+  <figure class="hero">
+    <img src="fig1.png"
+         alt="Overview of angular-to-spectral diversity conversion for snapshot hyperspectral imaging">
+  </figure>
+
   <h2>Abstract</h2>
 
   <p class="abstract">
-    Snapshot hyperspectral imaging avoids sequential scanning, but systems
-    that jointly achieve stable reconstruction, low cost, and compact optics
-    remain limited. We present a snapshot hyperspectral imaging system based
-    on angular-to-spectral diversity conversion. A tapered kaleidoscope
-    creates replicated views with distinct incidence directions, and a
-    directly attached birefringent filter converts them into
-    view-channel-dependent spectral transmittances, yielding complementary
-    measurements that better condition the inverse problem for more stable
-    single-shot spectral reconstruction. The system preserves a simple
-    pixel-wise linear model for fast non-learning-based reconstruction and
-    uses only off-the-shelf components without relay optics or cascaded
-    modules.
+    Snapshot hyperspectral imaging avoids sequential scanning, but systems that jointly
+    achieve stable reconstruction, low cost, and compact optics remain limited.
+    We present a snapshot hyperspectral imaging system based on angular-to-spectral
+    diversity conversion. A tapered kaleidoscope creates replicated views with distinct
+    incidence directions, and a directly attached birefringent filter converts them into
+    view-channel-dependent spectral transmittances, yielding complementary measurements
+    that better condition the inverse problem for more stable single-shot spectral
+    reconstruction. The system preserves a simple pixel-wise linear model for fast
+    non-learning-based reconstruction and uses only off-the-shelf components without
+    relay optics or cascaded modules.
   </p>
 
-  <h2>Key Idea</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="value">21 cm</div>
+      <div class="label">compact add-on</div>
+    </div>
+    <div class="stat">
+      <div class="value">25 bands</div>
+      <div class="label">spectral reconstruction</div>
+    </div>
+    <div class="stat">
+      <div class="value">430–670 nm</div>
+      <div class="label">spectral range</div>
+    </div>
+    <div class="stat">
+      <div class="value">No learning</div>
+      <div class="label">pixel-wise inverse solver</div>
+    </div>
+  </div>
+
+  <h2>System Overview</h2>
 
   <p>
-    A tapered kaleidoscope generates angularly diverse replicated views.
-    A directly attached birefringent filter converts this angular diversity
-    into spectral-response diversity, enabling compact and low-cost snapshot
-    hyperspectral imaging.
+    Our system converts angular diversity into spectral-response diversity in a compact
+    optical add-on. A tapered kaleidoscope generates multiple replicated views, and a
+    birefringent filter modulates each view differently depending on incidence direction.
+    These complementary measurements are then used to reconstruct the hyperspectral cube.
   </p>
 
-  <h2>System</h2>
+  <figure class="figure">
+    <img src="fig2.png"
+         alt="Optical system with objective lens, diffuser, birefringent filter, tapered kaleidoscope, imaging lens, and camera">
+    <figcaption>
+      Fig. 2. Optical system and angular-to-spectral diversity conversion.
+    </figcaption>
+  </figure>
 
-  <p>
-    The prototype is a compact 21 cm add-on built from off-the-shelf optical
-    components. It reconstructs 25 spectral bands from 430 nm to 670 nm
-    without learning-based reconstruction.
-  </p>
+  <div class="idea">
+    <div class="idea-item">
+      <div class="number">01</div>
+      <div class="title">Replicate views</div>
+      <div class="text">
+        The tapered kaleidoscope produces multiple views of the same scene with different
+        incidence directions.
+      </div>
+    </div>
+
+    <div class="idea-item">
+      <div class="number">02</div>
+      <div class="title">Convert angle to spectrum</div>
+      <div class="text">
+        The birefringent filter changes its spectral transmittance with incidence
+        direction, creating complementary spectral measurements.
+      </div>
+    </div>
+
+    <div class="idea-item">
+      <div class="number">03</div>
+      <div class="title">Reconstruct the cube</div>
+      <div class="text">
+        Registered measurements are combined through a simple pixel-wise linear model to
+        recover 25-band hyperspectral data.
+      </div>
+    </div>
+  </div>
+
+  <h2>Results</h2>
+
+  <div class="results">
+    <div class="result-card">
+      <img src="result_colorchecker.png"
+           alt="ColorChecker reflectance reconstruction result">
+      <div class="result-text">
+        <div class="result-title">ColorChecker experiment</div>
+        <div class="result-caption">
+          Reconstruction on real captured ColorChecker data. The figure shows the
+          reconstructed reflectance result and representative spectra across color patches.
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <img src="result_realscene.png"
+           alt="Real-scene hyperspectral reconstruction result">
+      <div class="result-text">
+        <div class="result-title">Real-scene reconstruction</div>
+        <div class="result-caption">
+          Real-scene 25-band reconstruction demonstrating material-dependent spectral
+          variation beyond flat calibration targets.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Video</h2>
+
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/zkBnp8gVejE"
+      title="A2SHSI video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <h2>BibTeX</h2>
 
-  <pre>
-@inproceedings{fujiwara2026a2shsi,
+  <pre>@inproceedings{fujiwara2026a2shsi,
   title     = {Compact Low-Cost Hyperspectral Imaging via Angular-to-Spectral Diversity Conversion},
   author    = {Fujiwara, Kazuma and Funatomi, Takuya and Kitano, Kazuya and Fujimura, Yuki and Mukaigawa, Yasuhiro},
   booktitle = {Computer Vision -- ECCV 2026},
   publisher = {Springer},
   year      = {2026}
-}
-  </pre>
+}</pre>
+
+  <footer>
+    ECCV 2026 · A2SHSI
+  </footer>
 
 </div>
-
 </body>
 </html>
